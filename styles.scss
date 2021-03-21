@@ -47,5 +47,5 @@ body {
 
 .container {
   display: grid;
-  grid-template: 1fr repeat(10, minmax(mix-content, 11rem)) 1fr;
+  grid-template: 1fr repeat(10, minmax(min-content, 11rem)) 1fr;
 }
