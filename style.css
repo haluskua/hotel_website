@@ -136,7 +136,7 @@ section#features-content {
 /** ***************** Gallery Features-text SECTION  *******************/
 
 section#features-text {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   grid-column: col-start 10 / center-end;
   height: 400px;
 }
