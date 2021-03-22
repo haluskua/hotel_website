@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: white;
 }
 
 /*********************************************** Utility Components  *************************************************/
@@ -47,6 +48,83 @@ body {
   background-color: var(--color-quaternary-m-dark);
 }
 
+/*  Anchor tags  */
+a:link,
+a:visited {
+  color: var(--color-quaternary);
+  text-decoration: none;
+  font-size: calc(0.5rem + 1vw);
+  padding: 1rem 2rem;
+  border-radius: 0.3rem;
+  position: relative;
+  transition: all var(--transition-duration) cubic-bezier(1, 0, 0, 1);
+  z-index: 1;
+}
+
+/* Paragraphs */
+p {
+  color: white;
+  font-size: calc(1rem + 1vw);
+  font-weight: 200;
+}
+
+/*  List Items */
+
+li {
+  list-style: none;
+  margin-bottom: 4rem;
+}
+/* Icons */
+i {
+  font-size: var(--font-size-title);
+  color: var(--color-secondary);
+}
+
+/** ***************** HEADER SECTION *******************/
+
+header#header {
+  /* background-color: var(--color-primary); */
+  grid-column: container-start / container-end;
+  background: url("img/hero.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Nav */
+.header__main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.header__main-nav input[type="checkbox"] {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  height: 5rem;
+  width: 5rem;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+  border: 1rem;
+}
+
+/*  HAMBURGER */
+
+.header__main-nav--hamburger {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  height: 5rem;
+  width: 5rem;
+  padding: 1rem;
+  background-color: var(--color-secondary);
+  z-index: 3;
+}
+/** ***************** MAIN SECTION *******************/
+
 .container {
   display: grid;
   grid-template-columns:
@@ -61,12 +139,7 @@ body {
 .container > * {
   font-size: 2rem;
 }
-/** ***************** HEADER SECTION *******************/
 
-header#header {
-  background-color: var(--color-primary);
-  grid-column: container-start / container-end;
-}
 /** ***************** BOOKING CONTENT SECTION  *******************/
 
 section#booking-content {
