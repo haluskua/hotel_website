@@ -105,16 +105,111 @@ header#header {
   left: 3rem;
   height: 5rem;
   width: 5rem;
-  /* opacity: 0; */
+  opacity: 0;
   cursor: pointer;
   z-index: 3;
   border: 1rem;
 }
 
-/*  HAMBURGER */
+/*  *)*) a better approach *)*)*  /
+/* .flex-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* Hamburger Lines */
+.header__main-nav--hamburger > div {
+  position: relative;
+  height: 0.3rem;
+  width: 100%;
+  background-color: var(--color-quaternary);
+
+  display: grid;
+  place-items: center;
+  transition: all var(--transition-duration) ease-in-out;
+}
+/* Hamburger Top and Bottom Lines  */
+.header__main-nav--hamburger > div::before,
+.header__main-nav--hamburger > div::after {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  width: 60%;
+  /* inherits from parent element */
+  height: inherit;
+  background-color: inherit;
+  z-index: 2;
+}
+
+.header__main-nav--hamburger > div::before {
+  left: 0;
+}
+.header__main-nav--hamburger > div::after {
+  top: 1rem;
+  right: 0;
+}
+
+/* Rotating the Menu */
+
+.header__main-nav
+  input[type="checkbox"]:checked
+  + .header__main-nav--hamburger
+  > div {
+  transform: rotate(135deg);
+}
+.header__main-nav
+  input[type="checkbox"]:checked
+  + .header__main-nav--hamburger {
+  border-radius: 4rem;
+  transition: all ease-in-out;
+}
+.header__main-nav
+  input[type="checkbox"]:checked
+  + .header__main-nav--hamburger
+  > div::before {
+  left: 0;
+  top: 0;
+  width: 100%;
+  transform: rotate(270deg);
+}
+.header__main-nav
+  input[type="checkbox"]:checked
+  + .header__main-nav--hamburger
+  > div::after {
+  opacity: 0;
+}
+
+.header__main-nav
+  input[type="checkbox"]:checked:hover
+  + .header__main-nav--hamburger
+  > div {
+  transform: rotate(255deg);
+}
+
+/* Links Menu */
+
+.header__main-nav--menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /* visibility: hidden; */
+  overflow: hidden;
+
+  display: grid;
+  place-items: center;
+}
+
+.header__main-nav--menu > div {
+}
+/* --------------- */
 
 .header__main-nav--hamburger {
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 3rem;
   left: 3rem;
   height: 5rem;
@@ -123,6 +218,7 @@ header#header {
   background-color: var(--color-secondary);
   z-index: 2;
 }
+
 /** ***************** MAIN SECTION *******************/
 
 .container {
