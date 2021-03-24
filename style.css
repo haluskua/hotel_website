@@ -117,6 +117,36 @@ header#header {
   align-items: center;
 } */
 
+/*  Hamburger  */
+.header__main-nav--hamburger {
+  position: absolute;
+
+  top: 3rem;
+  left: 3rem;
+  height: 5rem;
+  width: 5rem;
+  padding: 1rem;
+  background-color: var(--color-secondary);
+  z-index: 2;
+
+  /* display: flex;
+  align-items: center; */
+  display: grid;
+  place-items: center;
+  /* ANIMATION */
+  animation: main-nav 2s;
+}
+@keyframes main-nav {
+  0% {
+    transform: translateX(35rem) rotate(250deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+    opacity: 1;
+  }
+}
+
 /* Hamburger Lines */
 .header__main-nav--hamburger > div {
   position: relative;
@@ -274,19 +304,6 @@ header#header {
   transform: scaleY(1);
 }
 /* --------------- */
-
-.header__main-nav--hamburger {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  top: 3rem;
-  left: 3rem;
-  height: 5rem;
-  width: 5rem;
-  padding: 1rem;
-  background-color: var(--color-secondary);
-  z-index: 2;
-}
 
 /** ***************** MAIN SECTION *******************/
 
