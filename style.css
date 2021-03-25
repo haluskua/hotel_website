@@ -44,7 +44,7 @@
 body {
   font-family: "Titillium Web", sans-serif;
   line-height: 1.7;
-  background-color: var(--color-quaternary-m-dark);
+  background-color: var(--color-primary-m-light);
 }
 
 .container {
@@ -405,6 +405,7 @@ section#booking-content {
 section#booking-content p,
 .booking-date__contact p {
   color: var(--color-primary);
+  color: var(--color-quaternary);
 }
 
 .booking-content__icons {
@@ -423,7 +424,7 @@ section#booking-content p,
   align-items: center;
 }
 
-/*@@##$$%%^^&&**@@##$$%%^^&&**^^ Booking Date Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
+/* #########################################################################################   BOOKING DATE SECTION   ################################################################################################### */
 section#booking-date {
   grid-column: col-start 7 / center-end;
   padding: var(--padding-section);
@@ -456,7 +457,7 @@ section#booking-date {
 .booking-date__schedule--arrival > div,
 .booking-date__schedule--departure > div,
 .booking-date__schedule--guests > div {
-  background-color: var(--color-secondary);
+  background-color: var(--color-primary);
   padding: 2rem 4rem;
 
   display: grid;
@@ -499,8 +500,8 @@ section#booking-date {
 .booking-date__contact--link:hover,
 .booking-date__contact--link:active {
   color: var(--color-secondary);
-  background-color: white;
-  border: 0.1rem var(--color-secondary) solid;
+  background-color: var(--color-tertiary);
+  border: 0.1rem var(--color-quaternary) solid;
 }
 
 .booking-date__contact p:first-of-type {
