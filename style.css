@@ -42,12 +42,23 @@
 }
 
 body {
-  font-family: "Titallium Web", sans-serif;
-  line-height: 1.7rem;
-  background-color: var(--color-quaternary-m-dark);
+  font-family: "Titillium Web", sans-serif;
+  line-height: 1.7;
+  background-color: var(--color-quaternary);
 }
 
-/*  Anchor tags  */
+.container {
+  display: grid;
+  grid-template-columns:
+    [container-start] 1fr [center-start] repeat(
+      10,
+      [col-start] minmax(min-content, 11rem) [col-end]
+    )
+    [center-end] 1fr [container-end];
+  grid-template-rows: 100vh repeat(8, min-content);
+}
+
+/* Anchor tags */
 a:link,
 a:visited {
   color: var(--color-quaternary);
@@ -67,24 +78,29 @@ p {
   font-weight: 200;
 }
 
-/*  List Items */
-
+/* List Items */
 li {
   list-style: none;
   margin-bottom: 4rem;
 }
+
 /* Icons */
 i {
   font-size: var(--font-size-title);
   color: var(--color-secondary);
 }
 
-/** ***************** HEADER SECTION *******************/
+/* Main Styling */
 
+/*@@##$$%%^^&&**@@##$$%%^^&&**^^ Header Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
 header#header {
   /* background-color: var(--color-primary); */
   grid-column: container-start / container-end;
-  background: url("img/hero.jpg");
+  background: linear-gradient(
+      var(--color-primary-m-light),
+      var(--color-primary-m-light)
+    ),
+    url("img/hero.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -95,7 +111,7 @@ header#header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 6;
 }
 
 .header__main-nav input[type="checkbox"] {
@@ -107,20 +123,11 @@ header#header {
   opacity: 0;
   cursor: pointer;
   z-index: 3;
-  border: 1rem;
 }
 
-/*  *)*) a better approach *)*)*  /
-/* .flex-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-/*  Hamburger  */
+/* Hamburger */
 .header__main-nav--hamburger {
   position: absolute;
-
   top: 3rem;
   left: 3rem;
   height: 5rem;
@@ -130,17 +137,21 @@ header#header {
   z-index: 2;
 
   /* display: flex;
+  justify-content: center;
   align-items: center; */
+
   display: grid;
   place-items: center;
-  /* ANIMATION */
+
   animation: main-nav 2s;
 }
+
 @keyframes main-nav {
   0% {
-    transform: translateX(35rem) rotate(250deg);
+    transform: translateX(150rem) rotate(1800deg);
     opacity: 0;
   }
+
   100% {
     transform: translateX(0) rotate(0);
     opacity: 1;
@@ -158,14 +169,14 @@ header#header {
   place-items: center;
   transition: all var(--transition-duration) ease-in-out;
 }
-/* Hamburger Top and Bottom Lines  */
+
+/* hamburger Top and Bottom Lines */
 .header__main-nav--hamburger > div::before,
 .header__main-nav--hamburger > div::after {
   content: "";
   position: absolute;
   top: -1rem;
   width: 60%;
-  /* inherits from parent element */
   height: inherit;
   background-color: inherit;
   z-index: 2;
@@ -174,25 +185,20 @@ header#header {
 .header__main-nav--hamburger > div::before {
   left: 0;
 }
+
 .header__main-nav--hamburger > div::after {
   top: 1rem;
   right: 0;
 }
 
 /* Rotating the Menu */
-
 .header__main-nav
   input[type="checkbox"]:checked
   + .header__main-nav--hamburger
   > div {
   transform: rotate(135deg);
 }
-.header__main-nav
-  input[type="checkbox"]:checked
-  + .header__main-nav--hamburger {
-  border-radius: 4rem;
-  transition: all ease-in-out;
-}
+
 .header__main-nav
   input[type="checkbox"]:checked
   + .header__main-nav--hamburger
@@ -202,6 +208,7 @@ header#header {
   width: 100%;
   transform: rotate(270deg);
 }
+
 .header__main-nav
   input[type="checkbox"]:checked
   + .header__main-nav--hamburger
@@ -213,11 +220,10 @@ header#header {
   input[type="checkbox"]:checked:hover
   + .header__main-nav--hamburger
   > div {
-  transform: rotate(255deg);
+  transform: rotate(405deg);
 }
 
 /* Links Menu */
-
 .header__main-nav--menu {
   position: fixed;
   top: 0;
@@ -235,6 +241,7 @@ header#header {
   background-color: var(--color-secondary-m-dark);
   height: 200%;
   width: 200%;
+
   display: grid;
   place-items: center;
 
@@ -243,33 +250,26 @@ header#header {
 }
 
 .header__main-nav--menu > div > div {
-  /* background-color: #730039; */
   text-align: center;
   max-width: 90vw;
   max-height: 100vh;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
-/*  Displaying the Menu when Checkbox is Checked */
-
+/* Displaying the Menu when the checkbox is checked */
 .header__main-nav input[type="checkbox"]:checked ~ .header__main-nav--menu {
   visibility: visible;
 }
+
 .header__main-nav
   input[type="checkbox"]:checked
   ~ .header__main-nav--menu
   > div {
   transform: scaleX(1);
-  transition-duration: 0.88s;
+  /* transition-duration: 0.5s; */
 }
-.header__main-nav
-  input[type="checkbox"]:checked
-  ~ .header__main-nav--menu
-  > div
-  > {
-  visibility: visible;
-}
+
 .header__main-nav
   input[type="checkbox"]:checked
   ~ .header__main-nav--menu
@@ -303,108 +303,132 @@ header#header {
 .header__main-nav--menu ul li a:active::before {
   transform: scaleY(1);
 }
-/* --------------- */
 
-/** ***************** MAIN SECTION *******************/
-
-.container {
+/* The rest of the header section */
+.header__logo__content {
   display: grid;
-  grid-template-columns:
-    [container-start] 1fr [center-start] repeat(
-      10,
-      [col-start] minmax(min-content, 11rem) [col-end]
-    )
-    [center-end] 1fr [container-end];
-  grid-template-rows: 100vh repeat(8, min-content);
+  grid-template-columns: 1fr minmax(30rem, 1fr) 1fr;
+  grid-template-rows: min-content;
+  height: 90%;
+  justify-items: center;
 }
 
-.container > * {
-  font-size: 2rem;
+.header__logo__content--logo {
+  grid-column: 2 / 3;
+  letter-spacing: 0.2rem;
 }
 
-/** ***************** BOOKING CONTENT SECTION  *******************/
+.header__logo__content--logo span {
+  color: var(--color-tertiary);
+  font-size: 3rem;
+  font-family: "Times New Roman", Times, serif;
+}
 
+.header__logo__content--content {
+  grid-column: 1 / -1;
+  align-self: center;
+}
+
+.header__logo__content--content__title {
+  font-size: calc(4rem + 4vw);
+  font-weight: 300;
+  color: white;
+  text-transform: uppercase;
+  padding: 0 2rem 0 var(--font-size-title);
+}
+
+.header__logo__content--content__para {
+  font-size: calc(1rem + 2vw);
+  font-weight: 500;
+  padding: 2vh 2rem 6vh var(--font-size-title);
+}
+
+.header__logo__content--content__link:link,
+.header__logo__content--content__link:visited {
+  margin-left: var(--font-size-title);
+  border: 0.2rem solid var(--color-tertiary);
+  background-color: green;
+}
+
+.header__logo__content--content__link:link::before,
+.header__logo__content--content__link:visited::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-tertiary);
+  transform: scaleX(0);
+  transition: transform 0.45s cubic-bezier(1, 0, 0, 1);
+  z-index: -1;
+}
+
+.header__logo__content--content__link:hover::before,
+.header__logo__content--content__link:active::before {
+  transform: scaleX(1);
+  border-radius: 0rem;
+  border: 1px solid var(--color-tertiary);
+  background-color: var(--color-tertiary);
+}
+
+/*@@##$$%%^^&&**@@##$$%%^^&&**^^ Booking Content Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
 section#booking-content {
-  background-color: var(--color-secondary);
   grid-column: center-start / col-end 6;
-  height: 400px;
-}
-/** ***************** BOOKING date SECTION  *******************/
+  padding: var(--padding-section);
 
+  display: grid;
+  grid-template-rows: repeat(3, max-content);
+  grid-gap: 2vh;
+}
+
+.booking-content__title {
+  font-size: var(--font-size-title);
+  padding: 0 2rem 1rem;
+  font-weight: 300;
+  position: relative;
+}
+
+.booking-content__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  height: 0.2rem;
+  width: 30%;
+  background-color: var(--color-secondary);
+}
+
+.booking-content__para {
+  padding: 2rem;
+}
+
+section#booking-content p,
+.booking-date__contact p {
+  color: var(--color-primary);
+}
+
+.booking-content__icons {
+  margin-left: 2rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.booking-content__icons--weather,
+.booking-content__icons--time {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  grid-template-rows: 10vh;
+  justify-items: start;
+  align-items: center;
+}
+
+/*@@##$$%%^^&&**@@##$$%%^^&&**^^ Booking Date Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
 section#booking-date {
-  background-color: var(--color-tertiary);
   grid-column: col-start 7 / center-end;
-  height: 400px;
-}
+  padding: var(--padding-section);
 
-/** ***************** Villas SECTION  *******************/
-
-section#villas {
-  background-color: var(--color-primary);
-  grid-column: container-start / container-end;
-  height: 400px;
-}
-/** ***************** Motto SECTION  *******************/
-
-section#motto {
-  background-color: var(--color-secondary);
-  grid-column: container-start / container-end;
-  height: 400px;
-}
-
-/** ***************** Events Content SECTION  *******************/
-
-section#events-content {
-  background-color: var(--color-tertiary);
-  grid-column: container-start / col-end 9;
-  height: 400px;
-}
-/** ***************** Events Text SECTION  *******************/
-
-section#events-text {
-  background-color: var(--color-primary);
-  grid-column: col-start 10 / center-end;
-  height: 400px;
-}
-
-/** ***************** Gallery Text SECTION  *******************/
-
-section#gallery-text {
-  background-color: var(--color-secondary);
-  grid-column: center-start / col-end 1;
-  height: 400px;
-}
-/** ***************** Gallery Carousel SECTION  *******************/
-
-section#gallery-carousel {
-  background-color: var(--color-tertiary);
-  grid-column: col-start 2 / container-end;
-  height: 400px;
-}
-/** ***************** Features Content SECTION  *******************/
-
-section#features-content {
-  background-color: var(--color-primary);
-  grid-column: container-start / col-end 9;
-  height: 400px;
-}
-/** ***************** Gallery Features-text SECTION  *******************/
-
-section#features-text {
-  background-color: var(--color-secondary);
-  grid-column: col-start 10 / center-end;
-  height: 400px;
-}
-/** ***************** Testimonials SECTION  *******************/
-
-section#testimonials {
-  background-color: var(--color-tertiary);
-  grid-column: center-start / center-end;
-  height: 400px;
-}
-
-section#footer {
-  background-color: var(--color-primary);
-  grid-column: container-start / container-end;
-  height: 400px;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
 }
