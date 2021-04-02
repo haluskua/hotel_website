@@ -830,10 +830,7 @@ div.gallery-carousel__img-container {
   cursor: pointer;
   z-index: 1;
 }
-/* Button Left */
-.gallery-carousel__btn--left {
-  left: 0;
-}
+
 /* Button Right */
 .gallery-carousel__btn--right {
   right: 0;
@@ -871,9 +868,9 @@ div.gallery-carousel__img-container {
 }
 
 /* To hide the arrows */
-.hidden {
+/* .hidden {
   display: none;
-}
+} */
 /*@@##$$%%^^&&**@@##$$%%^^&&**^^ Features Content Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
 section#features-content > div:first-child {
   background: linear-gradient(
