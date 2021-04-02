@@ -372,7 +372,6 @@ header#header {
   border: 1px solid var(--color-tertiary); */
   background-color: var(--color-tertiary);
 }
-
 /*@@##$$%%^^&&**@@##$$%%^^&&**^^ Booking Content Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
 section#booking-content {
   grid-column: center-start / col-end 6;
@@ -406,7 +405,7 @@ section#booking-content {
 
 section#booking-content p,
 .booking-date__contact p {
-  color: var(--color-quaternary);
+  color: var(--color-primary);
 }
 
 .booking-content__icons {
@@ -425,7 +424,7 @@ section#booking-content p,
   align-items: center;
 }
 
-/* #########################################################################################   BOOKING DATE SECTION   ################################################################################################### */
+/*@@##$$%%^^&&**@@##$$%%^^&&**^^ Booking Date Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
 section#booking-date {
   grid-column: col-start 7 / center-end;
   padding: var(--padding-section);
@@ -458,7 +457,7 @@ section#booking-date {
 .booking-date__schedule--arrival > div,
 .booking-date__schedule--departure > div,
 .booking-date__schedule--guests > div {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   padding: 2rem 4rem;
 
   display: grid;
@@ -501,8 +500,8 @@ section#booking-date {
 .booking-date__contact--link:hover,
 .booking-date__contact--link:active {
   color: var(--color-secondary);
-  background-color: var(--color-tertiary);
-  border: 0.1rem var(--color-quaternary) solid;
+  background-color: white;
+  border: 0.1rem var(--color-secondary) solid;
 }
 
 .booking-date__contact p:first-of-type {
@@ -515,8 +514,7 @@ section#booking-date {
   font-size: 2rem;
 }
 
-/* #########################################################################################   BOOKING VILLA SECTION   ################################################################################################### */
-
+/*@@##$$%%^^&&**@@##$$%%^^&&**^^ Villas Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
 section#villas {
   grid-column: container-start / container-end;
 
@@ -679,33 +677,25 @@ section#motto {
 }
 
 /*@@##$$%%^^&&**@@##$$%%^^&&**^^ Events Content Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
-section#events-content {
+section#events-content,
+section#features-content {
   grid-column: container-start / col-end 9;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
-section#events-content > div {
+section#events-content > div,
+section#features-content > div {
   padding: var(--padding-section);
+  display: grid;
+
   grid-template-areas:
     "title"
     "para";
-
   grid-row-gap: 4vh;
   align-items: center;
   justify-items: start;
-}
-
-section#events-content > div h2[class*="title"] {
-  font-size: var(--font-size-title);
-  font-weight: 400;
-  color: white;
-}
-
-section#events-content > div p[class*="para"] {
-  grid-area: para;
-  color: white;
-  font-weight: 500;
 }
 
 section#events-content > div:first-child {
@@ -716,6 +706,7 @@ section#events-content > div:first-child {
     url("img/Events/beach-party.jpg");
   border-right: solid 0.2rem var(--color-tertiary);
 }
+
 section#events-content > div:last-child {
   background: linear-gradient(
       var(--color-tertiary-m-light),
@@ -730,6 +721,22 @@ section#events-content > div:last-child {
   background-size: cover;
   background-position: center;
 }
+
+section#events-content > div h2[class*="title"],
+section#features-content > div h2[class*="title"] {
+  grid-area: title;
+  font-size: var(--font-size-title);
+  font-weight: 400;
+  color: white;
+}
+
+section#events-content > div p[class*="para"],
+section#features-content > div p[class*="para"] {
+  grid-area: para;
+  color: white;
+  font-weight: 500;
+}
+
 /*@@##$$%%^^&&**@@##$$%%^^&&**^^ Events Text Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
 section#events-text,
 section#features-text {
@@ -744,7 +751,7 @@ section#features-text {
 
 .events-text__content,
 .features-text__content {
-  transform: rotate(0.25turn);
+  transform: rotate(0.175turn);
 }
 
 .events-text__content--title,
@@ -754,6 +761,115 @@ section#features-text {
   font-weight: 500;
   color: white;
   letter-spacing: 0.2rem;
+}
+
+/*@@##$$%%^^&&**@@##$$%%^^&&**^^ Gallery Text Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
+section#gallery-text {
+  background-color: var(--color-primary);
+  grid-column: center-start / col-end 1;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+}
+
+.gallery-text__content {
+  transform: rotate(-0.25turn);
+}
+
+/*@@##$$%%^^&&**@@##$$%%^^&&**^^ Gallery Carousel Section ^^**@@##$$%%^^&&**@@##$$%%^^&&*/
+section#gallery-carousel {
+  grid-column: col-start 2 / container-end;
+  height: 90vh;
+  overflow: hidden;
+  border: solid 0.2rem var(--color-secondary);
+  position: relative;
+}
+
+/* Image Container */
+div.gallery-carousel__img-container {
+  /* background-color: lawngreen; */
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+/* Image Container List (UL) */
+.gallery-carousel__img-container--list {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transition: transform var(--transition-duration) ease-in-out;
+}
+
+/* Image Container List Items (LIs) */
+.gallery-carousel__img-container--list__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Carousel Images */
+.gallery-carousel__img-container--list__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Carousel Buttons */
+.gallery-carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Button Right */
+.gallery-carousel__btn--right {
+  right: 0;
+}
+
+/* Carousel Nav */
+.gallery-carousel__nav {
+  /* background-color: red; */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 5%;
+  transform: translateX(-50%);
+  margin-bottom: 1rem;
+
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 3rem;
+}
+
+/* Carousel Nav Buttons */
+.gallery-carousel__nav--btn {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  border: none;
+  cursor: pointer;
+}
+
+/* Current Button/Image */
+.current--img {
+  background-color: var(--color-primary);
+}
+
+/* To hide the arrows */
+.hidden {
+  display: none;
 }
 
 /* ############################################################################################################################   MEDIA QUERIES CODE   ############################################################################################### */
