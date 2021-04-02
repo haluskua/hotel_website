@@ -830,7 +830,10 @@ div.gallery-carousel__img-container {
   cursor: pointer;
   z-index: 1;
 }
-
+/* Button Left */
+.gallery-carousel__btn--left {
+  left: 0;
+}
 /* Button Right */
 .gallery-carousel__btn--right {
   right: 0;
